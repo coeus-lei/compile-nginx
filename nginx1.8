@@ -2,9 +2,14 @@
 nginx_version="1.8.0"
 prefix="/usr/local/nginx/"
 
-curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
-tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
-
+if [ ! -f nginx-${nginx_version}.tar.gz ];then
+    rsync;echo 3 > /proc/sys/vm/drop_caches
+    curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
+    tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
+    else
+    rm -rf nginx-*
+fi
+    
 ./configure \
 --user=www \
 --group=www \
