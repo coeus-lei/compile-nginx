@@ -13,15 +13,15 @@ if [ ! -e nginx-${nginx_version}.tar.gz ];then
     rm -rf nginx-*
 fi
     
-./configure \
---user=www \
---group=www \
---prefix=/$prefix \
---sbin-path=/$prefix/sbin/nginx \
---conf-path=/$prefix/conf/nginx.conf \ 
---pid-path=/$prefix/logs/nginx.pid \
---error-log-path=/$prefix/logs/error.log \
---http-log-path=/$prefix/logs/access.log \
---lock-path=/var/run/nginx.lock \
+./configure 
+--user=www 
+--group=www 
+--prefix=/$prefix 
+--sbin-path=/$prefix/sbin/nginx
+--conf-path=/$prefix/conf/nginx.conf
+--pid-path=/$prefix/logs/nginx.pid
+--error-log-path=/$prefix/logs/error.log
+--http-log-path=/$prefix/logs/access.log
+--lock-path=/var/run/nginx.lock
 
 make && make install
