@@ -1,1 +1,19 @@
 #!/bin/bash
+nginx_version="1.8.0"
+prefix="/usr/local/nginx/"
+
+curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
+tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
+
+./configure \
+--user=www \
+--group=www \
+--prefix=/$prefix \
+--sbin-path=/$prefix/sbin/nginx \
+--conf-path=/$prefix/conf/nginx.conf \ 
+--pid-path=/$prefix/logs/nginx.pid \
+--error-log-path=/$prefixlogs/error.log \
+--http-log-path=/$prefix/logs/access.log \
+--lock-path=/var/run/nginx.lock \
+
+make && make install
