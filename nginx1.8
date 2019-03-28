@@ -3,7 +3,7 @@ nginx_version="1.8.0"
 prefix="/usr/local/nginx/"
 
 if [ ! -f nginx-${nginx_version}.tar.gz ];then
-    rsync;echo 3 > /proc/sys/vm/drop_caches
+#    rsync;echo 3 > /proc/sys/vm/drop_caches
     curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
     tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
     else
