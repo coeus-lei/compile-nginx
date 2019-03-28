@@ -1,6 +1,7 @@
 #!/bin/bash
 nginx_version="1.8.0"
-prefix="/usr/local/nginx/"
+prefix="usr/local/nginx"
+yum -y install gcc gcc-c++ make zlib-devel pcre-devel openssl-devel
 
 if [ ! -e nginx-${nginx_version}.tar.gz ];then
 #    rsync;echo 1 > /proc/sys/vm/drop_caches
@@ -19,7 +20,7 @@ fi
 --sbin-path=/$prefix/sbin/nginx \
 --conf-path=/$prefix/conf/nginx.conf \ 
 --pid-path=/$prefix/logs/nginx.pid \
---error-log-path=/$prefixlogs/error.log \
+--error-log-path=/$prefix/logs/error.log \
 --http-log-path=/$prefix/logs/access.log \
 --lock-path=/var/run/nginx.lock \
 
