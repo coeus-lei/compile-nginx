@@ -20,7 +20,7 @@ else
     tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
 fi
     
-./configure 
+./configure \
 --user=nginx \
 --group=nginx \
 --prefix=/$prefix \
