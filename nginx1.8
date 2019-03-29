@@ -8,14 +8,16 @@ else
 fi
 yum -y install gcc gcc-c++ make zlib-devel pcre-devel openssl-devel
 
-if [ ! -e nginx-${nginx_version}.tar.gz ];then
+if [ ! -e ./nginx-${nginx_version}.tar.gz ];then
 #    rsync;echo 1 > /proc/sys/vm/drop_caches
 #    rsync;echo 2 > /proc/sys/vm/drop_caches
 #    rsync;echo 3 > /proc/sys/vm/drop_caches
     curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
     tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
-    else
+else
     rm -rf nginx-*
+    curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
+    tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
 fi
     
 ./configure 
@@ -42,4 +44,4 @@ fi
 make && make install
 
 echo "PATH=$PATH:/usr/local/nginx/sbin/" >> /etc/profile
-source /etc/profile
+. /etc/profile
