@@ -13,11 +13,11 @@ if [ ! -e ./nginx-${nginx_version}.tar.gz ];then
 #    rsync;echo 2 > /proc/sys/vm/drop_caches
 #    rsync;echo 3 > /proc/sys/vm/drop_caches
     curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
-    tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
+    tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version} 2>&1 > /dev/null 
 else
     rm -rf nginx-*
     curl -O http://nginx.org/download/nginx-${nginx_version}.tar.gz
-    tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version}
+    tar -zxvf nginx-${nginx_version}.tar.gz && cd nginx-${nginx_version} 2>&1 > /dev/null
 fi
     
 ./configure \
@@ -39,7 +39,7 @@ fi
 --with-http_secure_link_module \
 --with-http_stub_status_module \
 --with-http_sub_module \
---with-pcre \
+--with-pcre \  2>&1 > /dev/null
 
 make && make install
 
