@@ -1,0 +1,5 @@
+#!/bin/bash
+#download php from officia og php
+Version_Url=`curl -Lks https://www.php.net/get/php-7.3.3.tar.gz/from/a/mirror | grep "hk" | grep "tar.gz" | awk -F "[\"]" 'NR==1{print $4}'`
+Version=`curl -Lks https://www.php.net/get/php-7.3.3.tar.gz/from/a/mirror | grep "hk" | grep "tar.gz" | awk -F "[/]" 'NR==1{print $5}'`
+curl -L -o ${Version} ${Version_Url}
