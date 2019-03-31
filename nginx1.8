@@ -43,7 +43,8 @@ fi
 
 make && make install
 
-export PATH=$PATH:/usr/local/nginx/sbin/
-echo "PATH=$PATH:/usr/local/nginx/sbin/" >> /etc/profile
-source /etc/profile
+#export PATH=$PATH:/usr/local/nginx/sbin/
+if ! egrep nginx /etc/profile >/dev/null 2>&1;then
+    echo "PATH=$PATH:/usr/local/nginx/sbin/" >> /etc/profile
+fi
 
